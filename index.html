@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kwanyangnim LLC | Digital Marketing Agency</title>
+  <meta name="description" content="Kwanyangnim LLC is a full-service digital marketing agency. We grow brands through social media, SEO, content, paid ads, and creative strategy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg:     #07010f;
+      --bg2:    #0e0419;
+      --bg3:    #13052a;
+      --orange: #f97316;
+      --purple: #a855f7;
+      --pink:   #ec4899;
+      --yellow: #fbbf24;
+      --text:   #f8f4ff;
+      --muted:  #6b5b85;
+      --card:   rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.07);
+      --grad:   linear-gradient(135deg, #f97316, #a855f7);
+      --grad2:  linear-gradient(135deg, #a855f7, #ec4899);
+      --grad3:  linear-gradient(135deg, #f97316, #ec4899);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(7,1,15,0.7); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.45rem; font-weight: 900;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--grad) !important; color: white !important;
+      padding: 0.55rem 1.4rem !important; border-radius: 8px; font-weight: 700 !important;
+      box-shadow: 0 0 20px rgba(249,115,22,0.3);
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 7rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 15% 60%, rgba(249,115,22,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 85% 20%, rgba(168,85,247,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 50% 90%, rgba(236,72,153,0.08) 0%, transparent 65%);
+    }
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .hero-content { position: relative; max-width: 920px; animation: fadeUp 0.8s ease; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.28);
+      color: var(--orange); padding: 0.42rem 1.1rem; border-radius: 100px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.03em; margin-bottom: 2rem;
+    }
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 900;
+      line-height: 1.08; margin-bottom: 1.5rem;
+    }
+    .grad-text {
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text2 {
+      background: var(--grad2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted);
+      max-width: 680px; margin: 0 auto 2.5rem; line-height: 1.78;
+    }
+    .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-p {
+      background: var(--grad); color: white; padding: 0.88rem 2rem; border-radius: 10px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s; box-shadow: 0 0 30px rgba(249,115,22,0.28);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(249,115,22,0.45); }
+    .btn-s {
+      background: var(--card); color: var(--text); padding: 0.88rem 2rem; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      border: 1px solid var(--border); transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-s:hover { border-color: rgba(249,115,22,0.45); color: var(--orange); }
+    .hero-kpis {
+      display: flex; justify-content: center; gap: 3.5rem; margin-top: 4.5rem;
+      flex-wrap: wrap; padding-top: 3rem; border-top: 1px solid var(--border);
+    }
+    .kpi-num { font-size: 2.4rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .kpi-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ===== SHARED ===== */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .sec-label {
+      display: inline-block; color: var(--orange); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.9rem;
+    }
+    .sec-title {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 900; line-height: 1.2; margin-bottom: 1.2rem;
+    }
+    .sec-sub { color: var(--muted); font-size: 1.05rem; max-width: 640px; line-height: 1.75; }
+    .sec-head { text-align: center; margin-bottom: 4rem; }
+    .sec-head .sec-sub { margin: 0 auto; }
+
+    /* ===== SERVICES ===== */
+    #services { background: var(--bg2); }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .svc-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 2.25rem; transition: all 0.35s; position: relative; overflow: hidden;
+    }
+    .svc-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+    }
+    .svc-card:hover { transform: translateY(-5px); border-color: rgba(249,115,22,0.22); background: rgba(255,255,255,0.055); }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: white; margin-bottom: 1.4rem;
+    }
+    .svc-icon.o { background: linear-gradient(135deg, #f97316, #fb923c); }
+    .svc-icon.p { background: linear-gradient(135deg, #a855f7, #c084fc); }
+    .svc-icon.pk { background: linear-gradient(135deg, #ec4899, #f472b6); }
+    .svc-icon.y { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+    .svc-icon.b { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+    .svc-icon.g { background: linear-gradient(135deg, #10b981, #34d399); }
+    .svc-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .svc-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.72; }
+
+    /* ===== RESULTS ===== */
+    #results { background: var(--bg); }
+    .results-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .results-text .sec-sub { margin-bottom: 2rem; }
+    .result-items { display: flex; flex-direction: column; gap: 1.5rem; }
+    .result-item {
+      display: flex; align-items: center; gap: 1.25rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.3rem 1.5rem;
+      transition: all 0.3s;
+    }
+    .result-item:hover { border-color: rgba(249,115,22,0.25); transform: translateX(4px); }
+    .result-icon {
+      width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
+      background: var(--grad); display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: white;
+    }
+    .result-label { font-size: 0.82rem; color: var(--muted); }
+    .result-val { font-size: 1.1rem; font-weight: 700; margin-top: 1px; }
+    .big-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .bstat {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 20px;
+      padding: 2rem; text-align: center; transition: all 0.3s;
+    }
+    .bstat:hover { border-color: rgba(249,115,22,0.3); }
+    .bstat-n {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem; font-weight: 900;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .bstat-l { font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--bg2); }
+    .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-visual-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 22px; padding: 2.5rem; position: relative; overflow: hidden;
+    }
+    .about-glow {
+      position: absolute; width: 260px; height: 260px; top: -80px; right: -80px;
+      background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%); pointer-events: none;
+    }
+    .about-glow2 {
+      position: absolute; width: 200px; height: 200px; bottom: -60px; left: -60px;
+      background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%); pointer-events: none;
+    }
+    .svc-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.75rem; }
+    .tag {
+      padding: 0.4rem 0.9rem; border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      border: 1px solid; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .tag-o { color: var(--orange); border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.07); }
+    .tag-p { color: var(--purple); border-color: rgba(168,85,247,0.3); background: rgba(168,85,247,0.07); }
+    .tag-pk { color: var(--pink); border-color: rgba(236,72,153,0.3); background: rgba(236,72,153,0.07); }
+    .tag-y { color: var(--yellow); border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.07); }
+    .check-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 0.9rem; }
+    .check-list li { display: flex; align-items: flex-start; gap: 0.7rem; color: var(--muted); font-size: 0.94rem; line-height: 1.5; }
+    .check-list li i { color: var(--orange); font-size: 0.9rem; margin-top: 3px; flex-shrink: 0; }
+
+    /* ===== PROCESS ===== */
+    #process { background: var(--bg); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; }
+    .step {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 2rem 1.75rem; transition: all 0.3s;
+    }
+    .step:hover { transform: translateY(-4px); border-color: rgba(249,115,22,0.25); }
+    .step-n {
+      width: 56px; height: 56px; border-radius: 14px; background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 900; color: white;
+      margin-bottom: 1.4rem; box-shadow: 0 0 25px rgba(249,115,22,0.28);
+    }
+    .step h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 0.7rem; }
+    .step p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials { background: var(--bg2); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .testi-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 2rem; transition: transform 0.3s; position: relative; overflow: hidden;
+    }
+    .testi-card::before {
+      content: '"'; position: absolute; top: 1rem; right: 1.5rem;
+      font-size: 5rem; font-weight: 900; color: rgba(249,115,22,0.08); line-height: 1;
+      font-family: Georgia, serif;
+    }
+    .testi-card:hover { transform: translateY(-4px); }
+    .stars { color: var(--yellow); font-size: 0.95rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testi-text { color: var(--muted); font-size: 0.93rem; line-height: 1.75; margin-bottom: 1.5rem; }
+    .author { display: flex; align-items: center; gap: 0.85rem; }
+    .avatar {
+      width: 44px; height: 44px; background: var(--grad); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.85rem; color: white; flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; font-size: 0.9rem; }
+    .author-role { color: var(--muted); font-size: 0.8rem; margin-top: 1px; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4.5rem; }
+    .contact-info h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.55rem; font-weight: 800; margin-bottom: 1rem; }
+    .contact-info > p { color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .c-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .c-icon {
+      width: 46px; height: 46px; flex-shrink: 0;
+      background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--orange);
+    }
+    .c-label { font-size: 0.78rem; color: var(--muted); }
+    .c-val { font-weight: 600; font-size: 0.95rem; margin-top: 1px; }
+    .form { display: grid; gap: 1.2rem; }
+    .form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .fg { display: flex; flex-direction: column; gap: 0.45rem; }
+    .fg label { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+    .fg input, .fg textarea, .fg select {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.8rem 1rem; color: var(--text); font-family: inherit; font-size: 0.93rem;
+      transition: border-color 0.3s; outline: none;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: #3d2a55; }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: rgba(249,115,22,0.5); }
+    .fg textarea { resize: vertical; min-height: 120px; }
+    .fg select { appearance: none; cursor: pointer; }
+    .fg select option { background: var(--bg2); }
+    .submit-btn {
+      background: var(--grad); color: white; border: none; padding: 0.9rem 2rem;
+      border-radius: 10px; font-size: 0.97rem; font-weight: 700; cursor: pointer;
+      transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-family: inherit; box-shadow: 0 0 25px rgba(249,115,22,0.25);
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(249,115,22,0.4); }
+    .form-success {
+      display: none; text-align: center; color: var(--orange);
+      padding: 1.5rem; background: rgba(249,115,22,0.07);
+      border: 1px solid rgba(249,115,22,0.25); border-radius: 12px; font-weight: 600;
+    }
+    .form-success i { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #040109; padding: 4rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .ft-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;
+    }
+    .ft-brand p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+    .ft-socials { display: flex; gap: 0.65rem; margin-top: 1.5rem; }
+    .ft-soc {
+      width: 38px; height: 38px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: all 0.3s;
+    }
+    .ft-soc:hover { color: var(--orange); border-color: rgba(249,115,22,0.4); }
+    .ft-col h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text); }
+    .ft-col ul { list-style: none; }
+    .ft-col ul li { margin-bottom: 0.7rem; }
+    .ft-col ul li a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
+    .ft-col ul li a:hover { color: var(--orange); }
+    .ft-bottom {
+      max-width: 1200px; margin: 0 auto; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .ft-bottom p { color: var(--muted); font-size: 0.83rem; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fi.vis { opacity: 1; transform: translateY(0); }
+    .fi-d1 { transition-delay: 0.1s; } .fi-d2 { transition-delay: 0.2s; }
+    .fi-d3 { transition-delay: 0.3s; } .fi-d4 { transition-delay: 0.4s; }
+    .fi-d5 { transition-delay: 0.5s; } .fi-d6 { transition-delay: 0.6s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: fixed;
+        top: 62px; left: 0; right: 0;
+        background: rgba(7,1,15,0.97); backdrop-filter: blur(24px);
+        padding: 2rem 2.5rem; gap: 1.75rem;
+        border-bottom: 1px solid var(--border); animation: fadeUp 0.3s ease;
+      }
+      .results-wrap, .about-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .ft-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4.5rem 1.25rem; }
+      .hero-kpis { gap: 2rem; }
+      .form-row2 { grid-template-columns: 1fr; }
+      .ft-grid { grid-template-columns: 1fr; }
+      .big-stats { grid-template-columns: 1fr 1fr; }
+      .ft-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">Kwanyangnim LLC</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="badge"><i class="fas fa-bolt"></i> Full-Service Digital Marketing Agency</div>
+    <h1>
+      Your Brand,<br>
+      <span class="grad-text">Amplified.</span>
+    </h1>
+    <p class="hero-desc">
+      We craft data-driven digital marketing strategies that grow your audience,
+      increase conversions, and build lasting brand equity in an ever-evolving digital world.
+    </p>
+    <div class="cta-row">
+      <a href="#contact" class="btn-p"><i class="fas fa-fire"></i> Grow My Brand</a>
+      <a href="#services" class="btn-s">Our Services <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="hero-kpis">
+      <div><div class="kpi-num">100+</div><div class="kpi-label">Brands Grown</div></div>
+      <div><div class="kpi-num">500%</div><div class="kpi-label">Average ROI</div></div>
+      <div><div class="kpi-num">10M+</div><div class="kpi-label">Reach Generated</div></div>
+      <div><div class="kpi-num">8+</div><div class="kpi-label">Years Experience</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="sec-head fi">
+      <div class="sec-label">What We Do</div>
+      <h2 class="sec-title">Marketing That <span class="grad-text">Actually Works</span></h2>
+      <p class="sec-sub">Every service we offer is built around one thing: measurable growth for your brand.</p>
+    </div>
+    <div class="grid-3">
+      <div class="svc-card fi fi-d1">
+        <div class="svc-icon o"><i class="fab fa-instagram"></i></div>
+        <h3>Social Media Management</h3>
+        <p>Strategic content creation, community management, and growth campaigns across Instagram, TikTok, LinkedIn, Facebook, and more.</p>
+      </div>
+      <div class="svc-card fi fi-d2">
+        <div class="svc-icon p"><i class="fas fa-search"></i></div>
+        <h3>Search Engine Optimization</h3>
+        <p>Technical SEO, content strategy, link building, and local search optimization to get you ranking higher and driving organic traffic.</p>
+      </div>
+      <div class="svc-card fi fi-d3">
+        <div class="svc-icon pk"><i class="fas fa-pen-nib"></i></div>
+        <h3>Content Marketing</h3>
+        <p>High-converting blog posts, video scripts, infographics, and brand storytelling that attracts, engages, and converts your ideal customers.</p>
+      </div>
+      <div class="svc-card fi fi-d4">
+        <div class="svc-icon y"><i class="fas fa-ad"></i></div>
+        <h3>Paid Advertising (PPC)</h3>
+        <p>Data-driven Google Ads, Meta Ads, and programmatic campaigns optimized for maximum return on every dollar you spend.</p>
+      </div>
+      <div class="svc-card fi fi-d5">
+        <div class="svc-icon b"><i class="fas fa-envelope-open-text"></i></div>
+        <h3>Email Marketing</h3>
+        <p>Automated drip sequences, newsletters, and segmented campaigns that nurture leads and turn one-time buyers into loyal advocates.</p>
+      </div>
+      <div class="svc-card fi fi-d6">
+        <div class="svc-icon g"><i class="fas fa-palette"></i></div>
+        <h3>Brand Strategy & Identity</h3>
+        <p>Logo design, visual identity systems, brand guidelines, and positioning strategy that make you instantly recognizable and unforgettable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="container">
+    <div class="results-wrap">
+      <div class="results-text fi">
+        <div class="sec-label">Why It Works</div>
+        <h2 class="sec-title">We Let Our <span class="grad-text">Numbers Talk</span></h2>
+        <p class="sec-sub">Every campaign we run is backed by data, powered by creativity, and optimized for real results. No vanity metrics — just growth that matters.</p>
+        <div class="result-items">
+          <div class="result-item">
+            <div class="result-icon"><i class="fas fa-chart-bar"></i></div>
+            <div>
+              <div class="result-label">Average Client Revenue Increase</div>
+              <div class="result-val">+180% within 6 months</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-icon"><i class="fas fa-users"></i></div>
+            <div>
+              <div class="result-label">Social Follower Growth</div>
+              <div class="result-val">+300% average in 90 days</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-icon"><i class="fas fa-mouse-pointer"></i></div>
+            <div>
+              <div class="result-label">Paid Ad Click-Through Rate</div>
+              <div class="result-val">4.2× industry average</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="result-icon"><i class="fas fa-search"></i></div>
+            <div>
+              <div class="result-label">SEO Ranking Improvement</div>
+              <div class="result-val">Page 1 results in 90 days</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fi fi-d2">
+        <div class="big-stats">
+          <div class="bstat"><div class="bstat-n">100+</div><div class="bstat-l">Active Clients</div></div>
+          <div class="bstat"><div class="bstat-n">500%</div><div class="bstat-l">Average ROI</div></div>
+          <div class="bstat"><div class="bstat-n">10M+</div><div class="bstat-l">Total Reach</div></div>
+          <div class="bstat"><div class="bstat-n">98%</div><div class="bstat-l">Retention Rate</div></div>
+          <div class="bstat"><div class="bstat-n">50M+</div><div class="bstat-l">Ad Impressions</div></div>
+          <div class="bstat"><div class="bstat-n">8 yrs</div><div class="bstat-l">In Business</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="fi">
+        <div class="about-visual-card">
+          <div class="about-glow"></div>
+          <div class="about-glow2"></div>
+          <div class="sec-label">Our Story</div>
+          <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.7rem;font-weight:900;line-height:1.3;margin-bottom:1rem;">
+            Creative minds. Data-driven decisions.
+          </h3>
+          <p style="color:var(--muted);font-size:0.93rem;line-height:1.75;margin-bottom:1.5rem;">
+            Kwanyangnim LLC was built by marketers who got tired of guesswork. We combine
+            creative instinct with rigorous analytics to build campaigns that don't just
+            look good — they perform.
+          </p>
+          <div class="svc-tags">
+            <span class="tag tag-o"><i class="fab fa-instagram"></i> Social Media</span>
+            <span class="tag tag-p"><i class="fas fa-search"></i> SEO / SEM</span>
+            <span class="tag tag-pk"><i class="fas fa-pen-nib"></i> Content</span>
+            <span class="tag tag-y"><i class="fas fa-ad"></i> Paid Ads</span>
+            <span class="tag tag-o"><i class="fas fa-envelope"></i> Email</span>
+            <span class="tag tag-p"><i class="fas fa-palette"></i> Branding</span>
+            <span class="tag tag-pk"><i class="fas fa-video"></i> Video</span>
+            <span class="tag tag-y"><i class="fas fa-chart-pie"></i> Analytics</span>
+          </div>
+        </div>
+      </div>
+      <div class="fi fi-d2">
+        <div class="sec-label">About Us</div>
+        <h2 class="sec-title">Your Growth Is <span class="grad-text">Our Mission</span></h2>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:1.25rem;">
+          At Kwanyangnim LLC, we believe great marketing is equal parts art and science.
+          Our team of strategists, creatives, and analysts work together to build
+          campaigns that connect with real people and drive real results.
+        </p>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:1.5rem;">
+          We partner with startups, growing businesses, and established brands who
+          want a marketing team that's genuinely invested in their success — not
+          just their invoices.
+        </p>
+        <ul class="check-list">
+          <li><i class="fas fa-check-circle"></i> Full-service team: strategists, designers, copywriters, and analysts</li>
+          <li><i class="fas fa-check-circle"></i> Monthly reporting with real KPIs, not vanity metrics</li>
+          <li><i class="fas fa-check-circle"></i> Custom strategy for every client — no copy-paste playbooks</li>
+          <li><i class="fas fa-check-circle"></i> Transparent pricing with no hidden fees</li>
+          <li><i class="fas fa-check-circle"></i> Always-on support and dedicated account management</li>
+        </ul>
+        <a href="#contact" class="btn-p" style="margin-top:2.5rem;width:fit-content;">
+          Start Growing Today <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="sec-head fi">
+      <div class="sec-label">Our Approach</div>
+      <h2 class="sec-title">How We <span class="grad-text">Deliver Results</span></h2>
+      <p class="sec-sub">A repeatable, proven process that takes you from strategy to measurable growth.</p>
+    </div>
+    <div class="steps">
+      <div class="step fi fi-d1">
+        <div class="step-n">01</div>
+        <h3>Brand & Audience Audit</h3>
+        <p>We deep-dive into your brand, competitors, and target audience to uncover untapped opportunities and positioning gaps.</p>
+      </div>
+      <div class="step fi fi-d2">
+        <div class="step-n">02</div>
+        <h3>Strategy Development</h3>
+        <p>We build a custom multi-channel strategy with clear goals, timelines, KPIs, and a roadmap to achieve them.</p>
+      </div>
+      <div class="step fi fi-d3">
+        <div class="step-n">03</div>
+        <h3>Launch & Execute</h3>
+        <p>Our creative and technical teams execute the plan — content, ads, SEO, email — with precision and speed.</p>
+      </div>
+      <div class="step fi fi-d4">
+        <div class="step-n">04</div>
+        <h3>Measure & Scale</h3>
+        <p>We track every metric, report transparently, and double down on what works to continuously compound your growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="sec-head fi">
+      <div class="sec-label">Success Stories</div>
+      <h2 class="sec-title">Brands That <span class="grad-text">Trust Us</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fi fi-d1">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">Kwanyangnim took our Instagram from 2K to 85K followers in four months. More importantly, our online sales tripled. These guys are the real deal.</p>
+        <div class="author">
+          <div class="avatar">AL</div>
+          <div>
+            <div class="author-name">Alexis Laurent</div>
+            <div class="author-role">Founder, Maison Beauté</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fi fi-d2">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">Our Google Ads were burning money before we hired Kwanyangnim. They cut our cost-per-acquisition by 60% and doubled our lead volume. Incredible results.</p>
+        <div class="author">
+          <div class="avatar">DM</div>
+          <div>
+            <div class="author-name">Daniel Moore</div>
+            <div class="author-role">CEO, Apex Real Estate Group</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fi fi-d3">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">The rebrand and content strategy they developed for us was a game-changer. We finally have a consistent brand voice and our email open rates went from 12% to 38%.</p>
+        <div class="author">
+          <div class="avatar">PC</div>
+          <div>
+            <div class="author-name">Priya Chandran</div>
+            <div class="author-role">Marketing Director, NovaTech SaaS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head fi">
+      <div class="sec-label">Start Today</div>
+      <h2 class="sec-title">Ready to <span class="grad-text">Grow?</span></h2>
+      <p class="sec-sub">Tell us about your brand and we'll come back with ideas within 24 hours.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="fi">
+        <div class="contact-info">
+          <h3>Let's Make Something Great</h3>
+          <p>Whether you're launching a new brand or scaling an existing one, we're ready to help you reach more people and generate more revenue.</p>
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-envelope"></i></div>
+            <div><div class="c-label">Email</div><div class="c-val">hello@kwanyangnim.com</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-phone"></i></div>
+            <div><div class="c-label">Phone</div><div class="c-val">Available upon request</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-clock"></i></div>
+            <div><div class="c-label">Response Time</div><div class="c-val">Within 24 hours</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-globe"></i></div>
+            <div><div class="c-label">Availability</div><div class="c-val">Worldwide — We work with anyone, anywhere</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="fi fi-d2">
+        <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row2">
+            <div class="fg"><label>First Name</label><input type="text" placeholder="Jane" required></div>
+            <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" required></div>
+          </div>
+          <div class="form-row2">
+            <div class="fg"><label>Email</label><input type="email" placeholder="jane@yourbrand.com" required></div>
+            <div class="fg"><label>Brand / Company</label><input type="text" placeholder="Your Brand"></div>
+          </div>
+          <div class="fg">
+            <label>What do you need most right now?</label>
+            <select>
+              <option>Social Media Management</option>
+              <option>Search Engine Optimization</option>
+              <option>Content Marketing</option>
+              <option>Paid Advertising (PPC)</option>
+              <option>Email Marketing</option>
+              <option>Brand Strategy & Identity</option>
+              <option>Full-Service Package</option>
+              <option>Not Sure Yet — Let's Talk</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Tell us about your brand and goals</label>
+            <textarea placeholder="What does your brand do? Who's your audience? What are you trying to achieve in the next 6 months?"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-rocket"></i> Send My Brief
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i>
+            Awesome! We'll reach out within 24 hours with ideas just for you.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="logo" style="font-size:1.35rem;">Kwanyangnim LLC</div>
+      <p>Creative strategy meets data-driven execution. We grow brands that stand out, connect authentically, and convert consistently.</p>
+      <div class="ft-socials">
+        <a href="#" class="ft-soc" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="ft-soc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="ft-soc" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="ft-soc" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Social Media</a></li>
+        <li><a href="#services">SEO / SEM</a></li>
+        <li><a href="#services">Content Marketing</a></li>
+        <li><a href="#services">Paid Advertising</a></li>
+        <li><a href="#services">Email Marketing</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#testimonials">Case Studies</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="#">E-Commerce</a></li>
+        <li><a href="#">SaaS & Tech</a></li>
+        <li><a href="#">Real Estate</a></li>
+        <li><a href="#">Health & Wellness</a></li>
+        <li><a href="#">Fashion & Lifestyle</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2024 Kwanyangnim LLC. All rights reserved.</p>
+    <p>Privacy Policy &nbsp;·&nbsp; Terms of Service</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('burger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    var form = document.getElementById('contactForm');
+    var success = document.getElementById('formSuccess');
+    Array.from(form.children).forEach(function(child) {
+      if (child.id !== 'formSuccess') child.style.display = 'none';
+    });
+    success.style.display = 'block';
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('vis'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi').forEach(function(el) { observer.observe(el); });
+
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('navbar');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(7,1,15,0.97)'
+      : 'rgba(7,1,15,0.7)';
+  });
+</script>
+</body>
+</html>
