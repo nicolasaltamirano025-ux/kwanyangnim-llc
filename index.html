@@ -54,6 +54,8 @@
     }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+    .lang-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 0.42rem 0.9rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; transition: all 0.3s; }
+    .lang-btn:hover { border-color: var(--orange); color: var(--orange); }
 
     /* ===== HERO ===== */
     #hero {
@@ -379,9 +381,12 @@
     <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
   </ul>
-  <button class="hamburger" id="burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <button id="langBtn" onclick="toggleLang()" class="lang-btn" aria-label="Switch language">ES</button>
+    <button class="hamburger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -794,6 +799,92 @@
       ? 'rgba(7,1,15,0.97)'
       : 'rgba(7,1,15,0.7)';
   });
+</script>
+<script>
+var T=[
+['.nav-links a',0,'Servicios'],['.nav-links a',1,'Resultados'],['.nav-links a',2,'Nosotros'],
+['.nav-links a',3,'Testimonios'],['.nav-links a',4,'Hablemos'],
+['.badge',0,'<i class="fas fa-bolt"></i> Agencia de Marketing Digital de América Latina'],
+['#hero h1',0,'Tu Marca,<br><span class="grad-text">Amplificada.</span>'],
+['.hero-desc',0,'Creamos estrategias de marketing digital basadas en datos que hacen crecer tu marca por toda Latinoamérica — aumentando conversiones y construyendo equity de marca en los mercados digitales de más rápido crecimiento de la región.'],
+['#hero .btn-p',0,'<i class="fas fa-fire"></i> Haz Crecer Mi Marca'],
+['#hero .btn-s',0,'Nuestros Servicios <i class="fas fa-arrow-right"></i>'],
+['.kpi-label',0,'Marcas Crecidas'],['.kpi-label',1,'ROI Promedio'],
+['.kpi-label',2,'Alcance Generado'],['.kpi-label',3,'Año de Fundación'],
+['#services .sec-label',0,'Lo Que Hacemos'],
+['#services .sec-title',0,'Marketing Que <span class="grad-text">Realmente Funciona</span>'],
+['#services .sec-sub',0,'Cada servicio que ofrecemos está construido alrededor de una sola cosa: crecimiento medible para tu marca.'],
+['.svc-card h3',0,'Gestión de Redes Sociales'],
+['.svc-card p',0,'Creación estratégica de contenido, gestión de comunidades y campañas de crecimiento en Instagram, TikTok, LinkedIn, Facebook y más.'],
+['.svc-card h3',1,'Optimización para Motores de Búsqueda'],
+['.svc-card p',1,'SEO técnico, estrategia de contenido, construcción de enlaces y optimización local para que aparezcas más arriba y atraigas tráfico orgánico.'],
+['.svc-card h3',2,'Marketing de Contenidos'],
+['.svc-card p',2,'Artículos de blog, guiones de video, infografías y storytelling de marca que atraen, enganchan y convierten a tus clientes ideales.'],
+['.svc-card h3',3,'Publicidad Pagada (PPC)'],
+['.svc-card p',3,'Campañas de Google Ads, Meta Ads y programáticas basadas en datos, optimizadas para el máximo retorno de cada peso que inviertes.'],
+['.svc-card h3',4,'Email Marketing'],
+['.svc-card p',4,'Secuencias automatizadas, newsletters y campañas segmentadas que nutren leads y convierten compradores ocasionales en clientes leales.'],
+['.svc-card h3',5,'Estrategia e Identidad de Marca'],
+['.svc-card p',5,'Diseño de logo, sistemas de identidad visual, manual de marca y estrategia de posicionamiento que te hacen reconocible e inconfundible.'],
+['#results .sec-label',0,'Por Qué Funciona'],
+['#results .sec-title',0,'Dejamos que Nuestros <span class="grad-text">Números Hablen</span>'],
+['#results .sec-sub',0,'Cada campaña que ejecutamos está respaldada por datos, impulsada por creatividad y optimizada para resultados reales. Sin métricas de vanidad — solo crecimiento que importa.'],
+['.result-label',0,'Aumento Promedio de Ingresos'],['.result-val',0,'+95% en 6 meses'],
+['.result-label',1,'Crecimiento de Seguidores en Redes'],['.result-val',1,'+150% promedio en 90 días'],
+['.result-label',2,'Tasa de Clics en Anuncios Pagados'],['.result-val',2,'2.8× el promedio de la industria'],
+['.result-label',3,'Mejora en Posicionamiento SEO'],['.result-val',3,'Página 1 en 3–6 meses'],
+['.bstat-l',0,'Clientes Activos'],['.bstat-l',1,'ROI Promedio'],['.bstat-l',2,'Alcance Total'],
+['.bstat-l',3,'Tasa de Retención'],['.bstat-l',4,'Impresiones de Anuncios'],['.bstat-l',5,'Año de Fundación'],
+['.about-visual-card .sec-label',0,'Nuestra Historia'],
+['.about-visual-card h3',0,'Mentes creativas. Decisiones basadas en datos.'],
+['.about-visual-card > p',0,'Kwanyangnim LLC fue construida por marketers que se cansaron de las suposiciones. Combinamos instinto creativo con analítica rigurosa para construir campañas que no solo se ven bien — funcionan.'],
+['#about .fi-d2 .sec-label',0,'Sobre Nosotros'],
+['#about .sec-title',0,'Tu Crecimiento Es <span class="grad-text">Nuestra Misión</span>'],
+['#about .fi-d2 p',0,'En Kwanyangnim LLC, creemos que el buen marketing es igual partes arte y ciencia. Nuestro equipo de estrategas, creativos y analistas trabajan juntos para construir campañas que conectan con audiencias latinoamericanas y generan resultados reales y medibles.'],
+['#about .fi-d2 p',1,'Fundada en 2023, Kwanyangnim LLC nació de años de trabajo independiente de marketing que nuestro equipo hacía mucho antes de que la empresa existiera oficialmente. Eso significa que obtienes la agilidad de una agencia joven respaldada por experiencia real y ganada — no suposiciones.'],
+['.check-list li',0,'<i class="fas fa-check-circle"></i> Equipo completo: estrategas, diseñadores, copywriters y analistas'],
+['.check-list li',1,'<i class="fas fa-check-circle"></i> Reportes mensuales con KPIs reales, no métricas de vanidad'],
+['.check-list li',2,'<i class="fas fa-check-circle"></i> Estrategia personalizada para cada cliente — sin playbooks de copia y pega'],
+['.check-list li',3,'<i class="fas fa-check-circle"></i> Precios transparentes sin cargos ocultos'],
+['.check-list li',4,'<i class="fas fa-check-circle"></i> Soporte permanente y gestión de cuenta dedicada'],
+['#about .btn-p',0,'Empieza a Crecer Hoy <i class="fas fa-arrow-right"></i>'],
+['#process .sec-label',0,'Nuestro Enfoque'],
+['#process .sec-title',0,'Cómo <span class="grad-text">Entregamos Resultados</span>'],
+['#process .sec-sub',0,'Un proceso repetible y probado que te lleva de la estrategia al crecimiento medible.'],
+['.step h3',0,'Auditoría de Marca y Audiencia'],['.step p',0,'Analizamos en profundidad tu marca, competidores y audiencia objetivo para descubrir oportunidades inexploradas y brechas de posicionamiento.'],
+['.step h3',1,'Desarrollo de Estrategia'],['.step p',1,'Construimos una estrategia multicanal personalizada con objetivos claros, tiempos, KPIs y una hoja de ruta para alcanzarlos.'],
+['.step h3',2,'Lanzamiento y Ejecución'],['.step p',2,'Nuestros equipos creativos y técnicos ejecutan el plan — contenido, anuncios, SEO, email — con precisión y velocidad.'],
+['.step h3',3,'Medir y Escalar'],['.step p',3,'Rastreamos cada métrica, reportamos con transparencia y apostamos doble por lo que funciona para componer continuamente tu crecimiento.'],
+['#testimonials .sec-label',0,'Historias de Éxito'],
+['#testimonials .sec-title',0,'Marcas que <span class="grad-text">Confían en Nosotros</span>'],
+['#contact .sec-label',0,'Empieza Hoy'],
+['#contact .sec-title',0,'¿Listo para <span class="grad-text">Crecer?</span>'],
+['#contact .sec-sub',0,'Cuéntanos sobre tu marca y te responderemos con ideas en 24 horas.'],
+['.contact-info h3',0,'Hagamos Algo Grandioso'],
+['.contact-info > p',0,'Ya sea que lances una nueva marca o escales una existente, estamos listos para ayudarte a crecer en Guatemala, Colombia, México, Brasil, Costa Rica y todo el mercado latinoamericano.'],
+['.c-label',0,'Correo Electrónico'],['.c-label',1,'Teléfono'],
+['.c-label',2,'Tiempo de Respuesta'],['.c-val',2,'En menos de 24 horas'],['.c-label',3,'Disponibilidad'],
+['label',0,'Nombre'],['label',1,'Apellido'],['label',2,'Correo Electrónico'],
+['label',3,'Marca / Empresa'],['label',4,'¿Qué necesitas más ahora?'],['label',5,'Cuéntanos sobre tu marca y objetivos'],
+['.submit-btn',0,'<i class="fas fa-rocket"></i> Enviar mi Brief'],
+['#formSuccess',0,'<i class="fas fa-check-circle"></i> ¡Genial! Te contactaremos en 24 horas con ideas para ti.'],
+['.ft-brand p',0,'La estrategia creativa se combina con la ejecución basada en datos. Hacemos crecer marcas que destacan, conectan auténticamente y convierten consistentemente.'],
+['.ft-col h4',0,'Servicios'],['.ft-col h4',1,'Empresa'],['.ft-col h4',2,'Industrias'],
+['.ft-col ul li a',0,'Redes Sociales'],['.ft-col ul li a',1,'SEO / SEM'],['.ft-col ul li a',2,'Marketing de Contenidos'],['.ft-col ul li a',3,'Publicidad Pagada'],['.ft-col ul li a',4,'Email Marketing'],
+['.ft-col ul li a',5,'Nosotros'],['.ft-col ul li a',6,'Resultados'],['.ft-col ul li a',7,'Casos de Éxito'],['.ft-col ul li a',8,'Nuestro Proceso'],['.ft-col ul li a',9,'Contacto'],
+['.ft-col ul li a',10,'E-Commerce'],['.ft-col ul li a',11,'SaaS y Tecnología'],['.ft-col ul li a',12,'Bienes Raíces'],['.ft-col ul li a',13,'Salud y Bienestar'],['.ft-col ul li a',14,'Moda y Estilo de Vida'],
+['.ft-bottom p',0,'© 2024 Kwanyangnim LLC. Todos los derechos reservados.'],
+['.ft-bottom p',1,'Política de Privacidad  ·  Términos de Servicio']
+];
+var _c={};
+function _el(s,i){return document.querySelectorAll(s)[i]||null;}
+function _apply(l){
+  T.forEach(function(t,i){var e=_el(t[0],t[1]);if(!e)return;if(!_c[i])_c[i]=e.innerHTML;e.innerHTML=l==='es'?t[2]:_c[i];});
+  var b=document.getElementById('langBtn');if(b)b.textContent=l==='es'?'EN':'ES';
+  try{localStorage.setItem('klang',l);}catch(x){}
+}
+function toggleLang(){try{_apply(localStorage.getItem('klang')==='es'?'en':'es');}catch(x){_apply('en');}}
+try{if(localStorage.getItem('klang')==='es')_apply('es');}catch(x){}
 </script>
 </body>
 </html>
